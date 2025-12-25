@@ -42,7 +42,7 @@ pipeline {
                             ssh -o StrictHostKeyChecking=no ubuntu@${INSTANCE_IP} <<EOF
                             if [ ! -d "${repoDirectory}" ]; then
                                 echo "Repository not found, cloning ${repoBranch} branch..."
-                                git clone --branch ${repoBranch} https://github.com/Arif-555/website-demo.git ${repoDirectory}
+                                git clone --branch ${repoBranch} git@github.com:Arif-555/website-demo.git ${repoDirectory}
                             else
                                 echo "Repository found, pulling latest changes for ${repoBranch}..."
                                 cd ${repoDirectory} && git pull origin ${repoBranch}
