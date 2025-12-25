@@ -11,7 +11,7 @@ pipeline {
 
     parameters {
         // Environment parameter to trigger the respective branch deployment
-        choice(name: 'ENVIRONMENT', choices: ['dev', 'staging', 'master'], description: 'Select the Environment to deploy')
+        choice(name: 'ENVIRONMENT', choices: ['dev', 'staging', 'main'], description: 'Select the Environment to deploy')
     }
 
     stages {
@@ -30,8 +30,8 @@ pipeline {
                     } else if (params.ENVIRONMENT == 'staging') {
                         repoBranch = "staging"
                         INSTANCE_IP = STAGING_INSTANCE
-                    } else if (params.ENVIRONMENT == 'master') {
-                        repoBranch = "master"
+                    } else if (params.ENVIRONMENT == 'main') {
+                        repoBranch = "main"
                         INSTANCE_IP = PROD_INSTANCE
                     }
 
