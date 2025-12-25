@@ -20,7 +20,7 @@ pipeline {
                 script {
                     // Determine which environment's repository to work with based on the parameter
                     def repoBranch = ""
-                    def repoDirectory = "/var/www/html/"
+                    def repoDirectory = "/var/www/html/website-demo.git"
                     def INSTANCE_IP = ""
 
                     // Set the repo branch and instance IP based on the selected environment
@@ -42,7 +42,7 @@ pipeline {
                             ssh -o StrictHostKeyChecking=no ubuntu@${INSTANCE_IP} <<EOF
                             if [ ! -d "${repoDirectory}" ]; then
                                 echo "Repository not found, cloning ${repoBranch} branch..."
-                                git clone --branch ${repoBranch} git@github.com:lbistech/sample-html-website.git ${repoDirectory}
+                                git clone --branch ${repoBranch} https://github.com/Arif-555/website-demo.git ${repoDirectory}
                             else
                                 echo "Repository found, pulling latest changes for ${repoBranch}..."
                                 cd ${repoDirectory} && git pull origin ${repoBranch}
